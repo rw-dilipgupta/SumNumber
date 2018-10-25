@@ -1,0 +1,59 @@
+﻿@model AdditionOfNumbers.Models.SumModel
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+<div class="jumbotron">
+    <p class="lead" style="text-align:center">Addition of two numbers</p>
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { @id = "CreateForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+      
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-5">
+                @Html.Label("First Number", htmlAttributes: new { @class = "form-control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.FirstNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                @Html.Label("Second Number", htmlAttributes: new { @class = "form-control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.SecondNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SecondNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                @Html.Label("Result", htmlAttributes: new { @class = "form-control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.DisplayFor(model => model.Result, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+
+            </div>
+            <div class="col-md-3">
+                <input type="submit" value="Add" style="float:right;" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8">
+               <p>@ViewBag.Message</p>
+            </div>
+        </div>
+    </div>
+            }
+        </div>
